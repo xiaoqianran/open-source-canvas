@@ -13,6 +13,23 @@
   <a href="docs/media/demo-1080p-v3.mp4"><img src="docs/media/demo-sharp-v3.gif" alt="Open Source Canvas 上游项目演示" width="720"></a>
 </p>
 
+## 快速启动：连接 Modal ComfyUI
+
+以下示例连接已部署的 Qwen Image 2.1 ComfyUI。需要 Node.js 20+ 与 npm。
+
+```bash
+git clone https://github.com/xiaoqianran/open-source-canvas.git
+cd open-source-canvas
+
+npm install
+npm run build
+
+export COMFY_URL="https://chenjunnaner--comfyui-1.us-east.modal.run"
+HOST=0.0.0.0 node server/app.mjs
+```
+
+启动后访问 `http://localhost:4173`（其他设备访问时使用运行画布的主机 IP）。`COMFY_URL` 是 ComfyUI 服务地址，不是 Modal Dashboard 链接。**注意：** `HOST=0.0.0.0` 会监听所有网卡；如不需要局域网访问，建议改为 `HOST=127.0.0.1`。连接成功不代表已适配 Qwen Image 2.1 的自定义生成工作流。
+
 ## 项目简介
 
 Open Source Canvas 是一个基于 **React、Vite、React Flow、Zustand** 构建的开源图片与视频创作画布。画布本身不运行模型，而是通过 **ComfyUI 的 HTTP / WebSocket API** 提交任务、监听进度并获取输出。
